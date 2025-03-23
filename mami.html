@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Iann ❤️ Neria</title>
+    <style>
+        body {
+            display: flex;
+            height: 100vh;
+            justify-content: center;
+            align-items: center;
+            background-color: #fff5f5; /* Soft pink background */
+            overflow: hidden;
+            margin: 0;
+            flex-direction: column;
+            position: relative;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0); }
+        }
+        .floating-heart {
+            position: absolute;
+            font-size: 24px;
+            color: #ff4d4d;
+            animation: float 3s infinite;
+        }
+
+        .card-container {
+            perspective: 1000px;
+            position: relative;
+        }
+
+        .card {
+            width: 600px; /* Larger width */
+            height: 450px; /* Larger height */
+            position: relative;
+            transform-style: preserve-3d;
+            transition: transform 1s ease-in-out;
+            cursor: pointer;
+        }
+
+        .card.flipped {
+            transform: rotateY(180deg);
+        }
+
+        .card-front, .card-back {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            backface-visibility: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 15px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        }
+
+        .card-front {
+            background-color: #ff4d4d;
+            color: white;
+            font-size: 28px;
+            font-weight: bold;
+            font-family: 'Dancing Script', cursive;
+        }
+
+        .card-back {
+            background-color: #fff; /* White background for the letter */
+            transform: rotateY(180deg);
+            padding: 40px; /* Increased padding */
+            font-family: 'Georgia', serif; /* Classic serif font */
+            font-size: 18px; /* Comfortable font size */
+            color: #333;
+            text-align: left; /* Left-aligned text */
+            line-height: 1.6; /* Improved line spacing */
+            overflow-y: auto; /* Add scroll if text overflows */
+        }
+
+        .card-back p {
+            margin: 0; /* Remove default paragraph margin */
+        }
+
+        .open-button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #ff4d4d;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .open-button:hover {
+            background-color: #e63946; /* Darker red on hover */
+        }
+
+        .stick-figures {
+            display: none;
+            margin-top: 20px;
+            gap: 20px;
+            align-items: flex-end;
+        }
+
+        .show-stick-figures {
+            display: flex;
+        }
+
+        .stick-figure {
+            width: 100px;
+            height: auto;
+            animation: float 3s infinite;
+        }
+
+        @keyframes sway {
+            0%, 100% { transform: rotate(-5deg); }
+            50% { transform: rotate(5deg); }
+        }
+
+        @keyframes wiggle {
+            0%, 100% { transform: rotate(0); }
+            25% { transform: rotate(10deg); }
+            50% { transform: rotate(-10deg); }
+            75% { transform: rotate(10deg); }
+        }
+
+        .iann {
+            animation: sway 3s infinite;
+        }
+
+        .neria {
+            animation: sway 3s infinite;
+        }
+
+        .flowers {
+            animation: wiggle 2s infinite;
+        }
+    </style>
+</head>
+<body>
+    <div class="card-container">
+        <div class="card">
+            <div class="card-front">For Neria ❤️</div>
+            <div class="card-back">
+                <p>
+                    Dear Neria,<br><br>
+                    Dear Neria
+                    I'm not the best with words, but I wanted to let you know how much I care for you and appreciate you. 
+                    I can't wait to talk to you every day — to tell you how my day went and to hear your voice. 
+                    And yes, you say I sigh a lot, but I can’t help it... you take my breath away with your mesmerizing voice.<br><br>
+                    So far, this journey with you has been amazing, and I treasure every second of it.<br><br>
+                    I like how you never finish your sentences, expecting me to know what you were going to say. 
+                    I love your brown eyes, I love that we can talk about film, and I love your competitive spirit and the drive you have. 
+                    I like how you always ask me questions, showing that you genuinely want to get to know me more. 
+                    I love your passion for being a doctor. I like how you say "haya bana" when you run out of things to say.<br><br>
+                    Honestly? Fuck it... I just like you.<br><br>
+                    I still want to get to know you more and more every single day as we build something special.
+                </p>
+            </div>
+        </div>
+        <button class="open-button" onclick="openCard()">Open</button>
+    </div>
+
+    <div class="stick-figures">
+        <!-- Iann (Suit with Flowers) -->
+        <svg class="stick-figure iann" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 200">
+            <!-- Head -->
+            <circle cx="50" cy="50" r="20" fill="#f4c2c2" />
+            <!-- Body -->
+            <rect x="40" y="70" width="20" height="50" fill="#1e3a8a" />
+            <!-- Arms -->
+            <line x1="30" y1="80" x2="70" y2="80" stroke="#1e3a8a" stroke-width="5" />
+            <!-- Legs -->
+            <line x1="40" y1="120" x2="30" y2="150" stroke="#1e3a8a" stroke-width="5" />
+            <line x1="60" y1="120" x2="70" y2="150" stroke="#1e3a8a" stroke-width="5" />
+            <!-- Flowers -->
+            <g class="flowers">
+                <circle cx="60" cy="60" r="5" fill="#ff69b4" />
+                <circle cx="65" cy="55" r="5" fill="#ff69b4" />
+                <circle cx="55" cy="55" r="5" fill="#ff69b4" />
+            </g>
+        </svg>
+
+        <!-- Neria (Scrubs and Lab Coat) -->
+        <svg class="stick-figure neria" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 200">
+            <!-- Head -->
+            <circle cx="50" cy="50" r="20" fill="#f4c2c2" />
+            <!-- Body (Lab Coat) -->
+            <rect x="30" y="70" width="40" height="50" fill="white" />
+            <!-- Scrubs -->
+            <rect x="35" y="80" width="30" height="40" fill="#87CEEB" />
+            <!-- Arms -->
+            <line x1="20" y1="80" x2="80" y2="80" stroke="white" stroke-width="5" />
+            <!-- Legs -->
+            <line x1="40" y1="120" x2="30" y2="150" stroke="white" stroke-width="5" />
+            <line x1="60" y1="120" x2="70" y2="150" stroke="white" stroke-width="5" />
+        </svg>
+    </div>
+
+    <audio id="loveSong" src="Giveon_-_Make_You_Mine-[AudioTrimmer.com].mp3"></audio>
+
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
+    <script>
+        function openCard() {
+            const card = document.querySelector('.card');
+            card.classList.add('flipped');
+
+            const stickFigures = document.querySelector('.stick-figures');
+            stickFigures.classList.add('show-stick-figures');
+
+            const song = document.getElementById('loveSong');
+            song.play();
+
+            confetti({
+                particleCount: 100,
+                spread: 70,
+                origin: { y: 0.6 }
+            });
+
+            // Disable the button after opening the card
+            const openButton = document.querySelector('.open-button');
+            openButton.disabled = true;
+            openButton.style.opacity = 0.5;
+        }
+
+        function createFloatingHearts() {
+            const numHearts = 20;
+            for (let i = 0; i < numHearts; i++) {
+                const heart = document.createElement('div');
+                heart.classList.add('floating-heart');
+                heart.innerHTML = '❤️';
+                heart.style.left = `${Math.random() * 100}vw`;
+                heart.style.top = `${Math.random() * 100}vh`;
+                heart.style.animationDuration = `${Math.random() * 2 + 2}s`;
+                document.body.appendChild(heart);
+            }
+        }
+        createFloatingHearts();
+    </script>
+</body>
+</html>
