@@ -3,18 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ian</title>
+    <title>Iann ❤️ Neria</title>
     <style>
         body {
             display: flex;
             height: 100vh;
             justify-content: center;
             align-items: center;
-            background-color: #fff5f5; /* Soft pink background */
+            background-color: #fff5f5;
             overflow: hidden;
             margin: 0;
             flex-direction: column;
             position: relative;
+        }
+
+        .floating-heart {
+            position: absolute;
+            font-size: 18px;
+            color: #ff4d4d;
+            animation: float 3s infinite;
         }
 
         @keyframes float {
@@ -22,21 +29,17 @@
             50% { transform: translateY(-10px); }
             100% { transform: translateY(0); }
         }
-        .floating-heart {
-            position: absolute;
-            font-size: 24px;
-            color: #ff4d4d;
-            animation: float 3s infinite;
-        }
 
         .card-container {
             perspective: 1000px;
             position: relative;
+            width: 90%;
+            max-width: 400px;
         }
 
         .card {
-            width: 600px; /* Larger width */
-            height: 450px; /* Larger height */
+            width: 100%;
+            height: 500px;
             position: relative;
             transform-style: preserve-3d;
             transition: transform 1s ease-in-out;
@@ -53,34 +56,45 @@
             position: absolute;
             backface-visibility: hidden;
             display: flex;
+            flex-direction: column;
             justify-content: center;
             align-items: center;
             border-radius: 15px;
             box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+            padding: 20px;
+            box-sizing: border-box;
         }
 
         .card-front {
             background-color: #ff4d4d;
             color: white;
-            font-size: 28px;
+            font-size: 24px;
             font-weight: bold;
             font-family: 'Dancing Script', cursive;
+            text-align: center;
         }
 
         .card-back {
-            background-color: #fff; /* White background for the letter */
+            background-color: #fff;
             transform: rotateY(180deg);
-            padding: 40px; /* Increased padding */
-            font-family: 'Georgia', serif; /* Classic serif font */
-            font-size: 18px; /* Comfortable font size */
+            font-family: 'Georgia', serif;
             color: #333;
-            text-align: left; /* Left-aligned text */
-            line-height: 1.6; /* Improved line spacing */
-            overflow-y: auto; /* Add scroll if text overflows */
+            text-align: left;
+            overflow: hidden;
+        }
+
+        .message-container {
+            height: calc(100% - 60px);
+            width: 100%;
+            overflow-y: auto;
+            padding-right: 10px;
+            margin-bottom: 15px;
         }
 
         .card-back p {
-            margin: 0; /* Remove default paragraph margin */
+            margin: 0 0 15px 0;
+            font-size: 15px;
+            line-height: 1.5;
         }
 
         .open-button {
@@ -96,13 +110,13 @@
         }
 
         .open-button:hover {
-            background-color: #e63946; /* Darker red on hover */
+            background-color: #e63946;
         }
 
         .stick-figures {
             display: none;
-            margin-top: 20px;
-            gap: 20px;
+            margin-top: 15px;
+            gap: 10px;
             align-items: flex-end;
         }
 
@@ -111,64 +125,113 @@
         }
 
         .stick-figure {
-            width: 100px;
+            width: 80px;
             height: auto;
             animation: float 3s infinite;
         }
 
-        @keyframes sway {
-            0%, 100% { transform: rotate(-5deg); }
-            50% { transform: rotate(5deg); }
+        /* Tulip styles */
+        .tulip {
+            position: absolute;
+            width: 15px;
+            height: 15px;
+            background-color: #ff69b4;
+            border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+            transform: rotate(-20deg);
         }
 
-        @keyframes wiggle {
-            0%, 100% { transform: rotate(0); }
-            25% { transform: rotate(10deg); }
-            50% { transform: rotate(-10deg); }
-            75% { transform: rotate(10deg); }
+        .tulip::after {
+            content: "";
+            position: absolute;
+            width: 3px;
+            height: 15px;
+            background-color: green;
+            bottom: -15px;
+            left: 6px;
         }
 
         .iann {
-            animation: sway 3s infinite;
+            position: relative;
         }
 
-        .neria {
-            animation: sway 3s infinite;
+        .iann .tulip {
+            top: 30px;
+            left: 50px;
         }
 
-        .flowers {
-            animation: wiggle 2s infinite;
-        }
-
-        .record-container {
-            display: none; /* Hidden by default */
+        /* Audio player styles */
+        .audio-container {
+            display: none;
             margin-top: 20px;
             text-align: center;
+            width: 100%;
         }
 
-        .record {
-            width: 100px;
-            height: 100px;
-            background-color: #333;
-            border-radius: 50%;
+        .audio-player {
+            width: 100%;
+            max-width: 300px;
+            background-color: #ff4d4d;
+            border-radius: 20px;
+            padding: 10px;
+            color: white;
+        }
+
+        .audio-controls {
             display: flex;
             justify-content: center;
             align-items: center;
-            color: white;
-            font-size: 14px;
-            cursor: pointer;
-            animation: spin 5s linear infinite;
-        }
-
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-
-        .record-label {
+            gap: 15px;
             margin-top: 10px;
-            font-size: 16px;
-            color: #333;
+        }
+
+        .play-btn {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 24px;
+            cursor: pointer;
+        }
+
+        .audio-title {
+            font-family: 'Dancing Script', cursive;
+            margin-bottom: 5px;
+        }
+
+        @media (max-width: 400px) {
+            .card {
+                height: 450px;
+            }
+            
+            .card-front {
+                font-size: 22px;
+            }
+            
+            .card-back p {
+                font-size: 14px;
+            }
+            
+            .stick-figure {
+                width: 70px;
+            }
+            
+            .iann .tulip {
+                top: 25px;
+                left: 45px;
+            }
+            
+            .message-container {
+                height: calc(100% - 50px);
+            }
+        }
+
+        @media (max-height: 700px) {
+            .card {
+                height: 400px;
+            }
+            
+            .message-container {
+                height: calc(100% - 40px);
+            }
         }
     </style>
 </head>
@@ -177,70 +240,78 @@
         <div class="card">
             <div class="card-front">For Neria ❤️</div>
             <div class="card-back">
-                <p>
-                    Dear Neria,<br><br>
-                    Dear Neria
-                    I'm not the best with words, but I wanted to let you know how much I care for you and appreciate you. 
-                    I can't wait to talk to you every day — to tell you how my day went and to hear your voice. 
-                    And yes, you say I sigh a lot, but I can’t help it... you take my breath away with your mesmerizing voice.<br><br>
-                    So far, this journey with you has been amazing, and I treasure every second of it.<br><br>
-                    I like how you never finish your sentences, expecting me to know what you were going to say. 
-                    I love your brown eyes, I love that we can talk about film, and I love your competitive spirit and the drive you have. 
-                    I like how you always ask me questions, showing that you genuinely want to get to know me more. 
-                    I love your passion for being a doctor. I like how you say "haya bana" when you run out of things to say.<br><br>
-                    Honestly? Fuck it... I just like you.<br><br>
-                    I still want to get to know you more and more every single day as we build something special.
-                </p>
+                <div class="message-container">
+                    <p>
+                        Dear Neria,<br><br>
+                        I'm not the best with words, but I wanted to let you know how much I care for you and appreciate you. 
+                        I can't wait to talk to you every day — to tell you how my day went and to hear your voice. 
+                        And yes, you say I sigh a lot, but I can't help it... you take my breath away with your mesmerizing voice.
+                    </p>
+                    <p>
+                        So far, this journey with you has been amazing, and I treasure every second of it.
+                    </p>
+                    <p>
+                        I like how you never finish your sentences, expecting me to know what you were going to say. 
+                        I love your brown eyes, I love that we can talk about film, and I love your competitive spirit and the drive you have. 
+                        I like how you always ask me questions, showing that you genuinely want to get to know me more. 
+                        I love your passion for being a doctor. I like how you say "haya bana" when you run out of things to say.
+                        i love that you lowkey believe in juju and talk to your magical star  
+                    </p>
+                    <p>
+                        Honestly? Fuck it... I just like you.
+                    </p>
+                    <p>
+                        I still want to get to know you more and more every single day as we build something special.
+                    </p>
+                    <p>
+                        yours Iann❤️
+                    </p>
+                </div>
+                
+                <!-- Audio Player Container -->
+                <div class="audio-container" id="audio-container">
+                    <div class="audio-player">
+                        <div class="audio-title">press play for more explanation</div>
+                        <audio id="audio-message" src="Kihonda Road.m4a"></audio>
+                        <div class="audio-controls">
+                            <button class="play-btn" id="play-btn">▶️</button>
+                            <span id="current-time">0:00</span>
+                            <input type="range" id="progress-bar" min="0" max="100" value="0">
+                            <span id="duration">0:00</span>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
         <button class="open-button" onclick="openCard()">Open</button>
     </div>
 
     <div class="stick-figures">
-        <!-- Iann (Suit with Flowers) -->
-        <svg class="stick-figure iann" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 200">
-            <!-- Head -->
-            <circle cx="50" cy="50" r="20" fill="#f4c2c2" />
-            <!-- Body -->
-            <rect x="40" y="70" width="20" height="50" fill="#1e3a8a" />
-            <!-- Arms -->
-            <line x1="30" y1="80" x2="70" y2="80" stroke="#1e3a8a" stroke-width="5" />
-            <!-- Legs -->
-            <line x1="40" y1="120" x2="30" y2="150" stroke="#1e3a8a" stroke-width="5" />
-            <line x1="60" y1="120" x2="70" y2="150" stroke="#1e3a8a" stroke-width="5" />
-            <!-- Flowers -->
-            <g class="flowers">
-                <circle cx="60" cy="60" r="5" fill="#ff69b4" />
-                <circle cx="65" cy="55" r="5" fill="#ff69b4" />
-                <circle cx="55" cy="55" r="5" fill="#ff69b4" />
-            </g>
-        </svg>
+        <!-- Iann with Tulips -->
+        <div class="iann">
+            <svg class="stick-figure" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 200">
+                <circle cx="50" cy="50" r="20" fill="#f4c2c2" />
+                <rect x="40" y="70" width="20" height="50" fill="#1e3a8a" />
+                <line x1="30" y1="80" x2="70" y2="80" stroke="#1e3a8a" stroke-width="5" />
+                <line x1="40" y1="120" x2="30" y2="150" stroke="#1e3a8a" stroke-width="5" />
+                <line x1="60" y1="120" x2="70" y2="150" stroke="#1e3a8a" stroke-width="5" />
+            </svg>
+            <div class="tulip"></div>
+        </div>
 
-        <!-- Neria (Scrubs and Lab Coat) -->
-        <svg class="stick-figure neria" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 200">
-            <!-- Head -->
+        <!-- Neria -->
+        <svg class="stick-figure" xmlns="http://www3.org/2000/svg" viewBox="0 0 100 200">
             <circle cx="50" cy="50" r="20" fill="#f4c2c2" />
-            <!-- Body (Lab Coat) -->
             <rect x="30" y="70" width="40" height="50" fill="white" />
-            <!-- Scrubs -->
             <rect x="35" y="80" width="30" height="40" fill="#87CEEB" />
-            <!-- Arms -->
             <line x1="20" y1="80" x2="80" y2="80" stroke="white" stroke-width="5" />
-            <!-- Legs -->
             <line x1="40" y1="120" x2="30" y2="150" stroke="white" stroke-width="5" />
             <line x1="60" y1="120" x2="70" y2="150" stroke="white" stroke-width="5" />
         </svg>
     </div>
 
-    <!-- Record Container -->
-    <div class="record-container">
-        <div class="record" onclick="playAudioMessage()">🎙️</div>
-        <div class="record-label">For more explanation, click here</div>
-    </div>
-
-    <!-- Audio Elements -->
-    <audio id="loveSong" src="Giveon_-_Make_You_Mine-[AudioTrimmer.com].mp3"></audio>
-    <audio id="audioMessage" src="Kihonda Road.m4a"></audio> <!-- Replace with your audio file -->
+    <!-- Background Music (hidden) -->
+    <audio id="background-music" loop src="Giveon_-_Make_You_Mine-[AudioTrimmer.com].mp3"></audio>
 
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
     <script>
@@ -251,12 +322,15 @@
             const stickFigures = document.querySelector('.stick-figures');
             stickFigures.classList.add('show-stick-figures');
 
-            const recordContainer = document.querySelector('.record-container');
-            recordContainer.style.display = 'block'; // Show the record
+            const audioContainer = document.getElementById('audio-container');
+            audioContainer.style.display = 'block';
 
-            const song = document.getElementById('loveSong');
-            song.play();
+            // Play background music
+            const bgMusic = document.getElementById('background-music');
+            bgMusic.volume = 0.3; // Lower volume
+            bgMusic.play();
 
+            // Show confetti
             confetti({
                 particleCount: 100,
                 spread: 70,
@@ -269,22 +343,68 @@
             openButton.style.opacity = 0.5;
         }
 
-        function playAudioMessage() {
-            const song = document.getElementById('loveSong');
-            const audioMessage = document.getElementById('audioMessage');
+        // Audio player functionality
+        const audioMessage = document.getElementById('audio-message');
+        const playBtn = document.getElementById('play-btn');
+        const progressBar = document.getElementById('progress-bar');
+        const currentTimeEl = document.getElementById('current-time');
+        const durationEl = document.getElementById('duration');
 
-            if (!audioMessage.paused) {
-                audioMessage.pause();
-                audioMessage.currentTime = 0; // Reset audio
-                song.play(); // Resume background music
+        playBtn.addEventListener('click', () => {
+            if (audioMessage.paused) {
+                audioMessage.play();
+                playBtn.textContent = '⏸️';
+                // Pause background music when message plays
+                document.getElementById('background-music').pause();
             } else {
-                song.pause(); // Pause background music
-                audioMessage.play(); // Play custom audio message
+                audioMessage.pause();
+                playBtn.textContent = '▶️';
+                // Resume background music
+                document.getElementById('background-music').play();
             }
+        });
+
+        // Update progress bar
+        audioMessage.addEventListener('timeupdate', () => {
+            const currentTime = audioMessage.currentTime;
+            const duration = audioMessage.duration;
+            
+            // Update progress bar
+            progressBar.value = (currentTime / duration) * 100;
+            
+            // Format time
+            currentTimeEl.textContent = formatTime(currentTime);
+            
+            if (duration) {
+                durationEl.textContent = formatTime(duration);
+            }
+        });
+
+        // Seek functionality
+        progressBar.addEventListener('input', () => {
+            const seekTime = (progressBar.value / 100) * audioMessage.duration;
+            audioMessage.currentTime = seekTime;
+        });
+
+        // Reset when audio ends
+        audioMessage.addEventListener('ended', () => {
+            playBtn.textContent = '▶️';
+            progressBar.value = 0;
+            currentTimeEl.textContent = '0:00';
+            // Resume background music
+            document.getElementById('background-music').play();
+        });
+
+        // Format time (seconds to MM:SS)
+        function formatTime(seconds) {
+            const mins = Math.floor(seconds / 60);
+            const secs = Math.floor(seconds % 60);
+            return `${mins}:${secs < 10 ? '0' : ''}${secs}`;
         }
 
+        // Create floating hearts
         function createFloatingHearts() {
-            const numHearts = 20;
+            const numHearts = 15;
             for (let i = 0; i < numHearts; i++) {
                 const heart = document.createElement('div');
                 heart.classList.add('floating-heart');
